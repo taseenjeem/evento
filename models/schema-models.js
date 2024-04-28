@@ -32,4 +32,4 @@ const schema = new Schema({
 });
 
 export const schemaModel =
-  mongoose.model.event ?? mongoose.model("events", schema);
+  mongoose.models.events ?? mongoose.model("events", schema);
