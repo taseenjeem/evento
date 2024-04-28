@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <main className="py-8">{children}</main>
+        <main className="py-8 container">{children}</main>
       </body>
     </html>
   );

@@ -1,5 +1,11 @@
+import Header from "@/components/root-page/Header";
+
 const RootPage = () => {
-  return <h1>Hello World</h1>;
+  return (
+    <>
+      <Header />
+    </>
+  );
 };
 
 export default RootPage;
