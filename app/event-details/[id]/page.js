@@ -1,15 +1,18 @@
 import EventDetails from "@/components/event-details-page/EventDetails";
 import EventVenue from "@/components/event-details-page/EventVenue";
 import HeroSection from "@/components/event-details-page/HeroSection";
+import { getEventByID } from "@/db/queries";
 
-const EventDetailsPage = () => {
+const EventDetailsPage = async ({ params }) => {
+  const eventInfo = await getEventByID(params?.id);
+
   return (
     <>
-      <HeroSection />
+      <HeroSection eventInfo={eventInfo} />
       <section class="container">
         <div class="grid grid-cols-5 gap-12 my-12">
-          <EventDetails />
-          <EventVenue />
+          <EventDetails details={eventInfo?.details} swags={eventInfo?.swags} />
+          <EventVenue location={eventInfo?.location} />
         </div>
       </section>
     </>

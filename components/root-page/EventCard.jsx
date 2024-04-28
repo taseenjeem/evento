@@ -3,7 +3,6 @@ import Link from "next/link";
 import ActionButtons from "../ActionButtons";
 
 const EventCard = ({ event }) => {
-  console.log(event.name);
   return (
     <>
       <div className="overflow-hidden rounded-md bg-[#242526]">
