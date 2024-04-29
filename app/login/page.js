@@ -10,7 +10,10 @@ const LoginPage = () => {
           <LoginForm />
           <span className="text-center text-xs text-gray-500">
             Don&apos;t have an account?
-            <Link className="underline hover:text-indigo-600" href="/register">
+            <Link
+              className="underline hover:text-indigo-600 ml-1"
+              href="/register"
+            >
               Register
             </Link>
           </span>
