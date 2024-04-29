@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import AuthStatus from "./auth-pages/AuthStatus";
 
 const Navbar = () => {
   return (
@@ -13,7 +14,7 @@ const Navbar = () => {
 
         <ul className="flex gap-4 text-[#9C9C9C]">
           <li>
-            <Link href={`/login`}>Log In</Link>
+            <AuthStatus />
           </li>
           <li>About</li>
           <li>Contact Us</li>

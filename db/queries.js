@@ -19,6 +19,11 @@ export const createUser = async (userInfo) => {
 };
 
 export const findUser = async (credentials) => {
-  const user = await userSchemaModel.findOne(credentials);
-  return user;
+  const user = await userSchemaModel.findOne(credentials).lean();
+
+  if (user) {
+    return replaceMongoIdInObject(user);
+  } else {
+    return null;
+  }
 };

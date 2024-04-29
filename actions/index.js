@@ -16,16 +16,17 @@ export const registerUser = async (formData) => {
 };
 
 export const userLogin = async (formData) => {
-  const credentials = {
-    email: formData.get("email"),
-    password: formData.get("password"),
-  };
+  try {
+    const credentials = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
 
-  const userFounded = await findUser(credentials);
+    const userFounded = await findUser(credentials);
 
-  if (userFounded) {
-    redirect("/");
-  } else {
-    throw new Error(`User with ${formData.get("email")} is not founded!`);
+    return userFounded;
+  } catch (error) {
+    console.error(error);
+    throw error;
   }
 };
