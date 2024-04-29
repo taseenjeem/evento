@@ -1,6 +1,7 @@
 "use server";
 
-import { createUser, findUser } from "@/db/queries";
+import { createUser, findUser, updateEveInterest } from "@/db/queries";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export const registerUser = async (formData) => {
@@ -28,5 +29,16 @@ export const userLogin = async (formData) => {
   } catch (error) {
     console.error(error);
     throw error;
+  }
+};
+
+export const addInterestInEvent = async (eveID, authId) => {
+  try {
+    await updateEveInterest(eveID, authId);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  } finally {
+    revalidatePath("/");
   }
 };
