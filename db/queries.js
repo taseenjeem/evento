@@ -17,3 +17,8 @@ export const getEventByID = async (eventID) => {
 export const createUser = async (userInfo) => {
   return await userSchemaModel.create(userInfo);
 };
+
+export const findUser = async (credentials) => {
+  const user = await userSchemaModel.findOne(credentials);
+  return user;
+};
