@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const schema = new Schema({
+const eventSchema = new Schema({
   name: {
     required: true,
     type: String,
@@ -31,5 +31,31 @@ const schema = new Schema({
   },
 });
 
-export const schemaModel =
-  mongoose.models.events ?? mongoose.model("events", schema);
+const userSchema = new Schema({
+  name: {
+    required: true,
+    type: String,
+  },
+  email: {
+    required: true,
+    type: String,
+  },
+  password: {
+    required: true,
+    type: String,
+  },
+  phone: {
+    required: true,
+    type: String,
+  },
+  bio: {
+    required: true,
+    type: String,
+  },
+});
+
+export const eventSchemaModel =
+  mongoose.models.events ?? mongoose.model("events", eventSchema);
+
+export const userSchemaModel =
+  mongoose.models.users ?? mongoose.model("users", userSchema);
