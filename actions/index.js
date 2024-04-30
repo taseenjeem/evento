@@ -1,6 +1,11 @@
 "use server";
 
-import { createUser, findUser, updateEveInterest } from "@/db/queries";
+import {
+  createUser,
+  findUser,
+  updateEveInterest,
+  updateGoing,
+} from "@/db/queries";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -41,4 +46,15 @@ export const interestInEvent = async (eveID, authId) => {
   } finally {
     revalidatePath("/");
   }
+};
+
+export const addGoingOnEvent = async (eveID, user) => {
+  try {
+    await updateGoing(eveID, user?.id);
+  } catch (error) {
+    console.error(error);
+    throw error;
+  }
+  revalidatePath("/");
+  redirect("/");
 };

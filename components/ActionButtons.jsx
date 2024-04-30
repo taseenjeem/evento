@@ -4,12 +4,19 @@ import useAuth from "@/hooks/useAuth";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 
-const ActionButtons = ({ fromDetails, eventID, interestedUserIDs }) => {
+const ActionButtons = ({
+  fromDetails,
+  eventID,
+  interestedUserIDs,
+  goingUserIDs,
+}) => {
   const { authDetails } = useAuth();
   const router = useRouter();
   const isInterested = interestedUserIDs?.find((id) => id === authDetails?.id);
+  const isGoing = goingUserIDs?.find((id) => id === authDetails?.id);
   const [interested, setInterested] = useState(isInterested);
   const [isPending, startTransition] = useTransition();
+  const [going, setGoing] = useState(isGoing);
 
   const toggleInterestEvent = async () => {
     if (authDetails) {
@@ -22,7 +29,7 @@ const ActionButtons = ({ fromDetails, eventID, interestedUserIDs }) => {
 
   const onGoing = () => {
     if (authDetails) {
-      router.push("/payment");
+      router.push(`/payment/${eventID}`);
     } else {
       router.push("/login");
     }
@@ -44,8 +51,9 @@ const ActionButtons = ({ fromDetails, eventID, interestedUserIDs }) => {
           Interested
         </button>
         <button
+          disabled={authDetails && going}
           onClick={onGoing}
-          className=" text-center w-full bg-[#464849] py-2 px-2 rounded-md border border-[#5F5F5F]/50 shadow-sm cursor-pointer hover:bg-[#3C3D3D] transition-colors active:translate-y-1"
+          className="text-center w-full bg-[#464849] py-2 px-2 rounded-md border border-[#5F5F5F]/50 shadow-sm cursor-pointer hover:bg-[#3C3D3D] transition-colors active:translate-y-1"
         >
           Going
         </button>
