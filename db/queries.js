@@ -46,3 +46,9 @@ export const updateEveInterest = async (eveID, authID) => {
     event.save();
   }
 };
+
+export const updateGoing = async (eveID, authID) => {
+  const event = await eventSchemaModel.findById(eveID);
+  event.going_ids.push(new mongoose.Types.ObjectId(authID));
+  event.save();
+};

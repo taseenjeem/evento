@@ -28,7 +28,11 @@ const HeroSection = ({ eventInfo }) => {
             </div>
           </div>
 
-          <ActionButtons fromDetails={true} />
+          <ActionButtons
+            fromDetails={true}
+            eventID={eventInfo?.id}
+            interestedUserIDs={eventInfo?.interested_ids}
+          />
         </div>
       </section>
     </>

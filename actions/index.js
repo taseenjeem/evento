@@ -32,7 +32,7 @@ export const userLogin = async (formData) => {
   }
 };
 
-export const addInterestInEvent = async (eveID, authId) => {
+export const interestInEvent = async (eveID, authId) => {
   try {
     await updateEveInterest(eveID, authId);
   } catch (error) {
